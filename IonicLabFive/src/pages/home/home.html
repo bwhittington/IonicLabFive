@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Grad Academy
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+    <h2 class="center">Grad Academy Cordova Lab</h2>
+    <ion-list>
+        <button ion-item (click)="goToCourses()">
+            <ion-avatar item-left>
+                <ion-icon name="md-book"></ion-icon>
+            </ion-avatar>
+            Courses
+        </button>
+        <button ion-item (click)="goToInstructors()">
+            <ion-avatar item-left>
+                <ion-icon name="md-cafe"></ion-icon>
+            </ion-avatar>
+            Instructors
+        </button>
+        <button ion-item (click)="goToStudents()">
+            <ion-avatar item-left>
+                <ion-icon name="md-people"></ion-icon>
+            </ion-avatar>
+            Students
+        </button>
+        <button ion-item (click)="goToTools()">
+            <ion-avatar item-left>
+                <ion-icon name="md-hammer"></ion-icon>
+            </ion-avatar>
+            Tools
+        </button>
+    </ion-list>
+</ion-content>

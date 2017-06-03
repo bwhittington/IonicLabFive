@@ -1,0 +1,51 @@
+﻿<h2 class="center">Loan Calculator</h2>
+<ion-slides #loanCalculatorSlider pager>
+    <ion-slide>
+        <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+        <ion-list no-lines class="amortization">
+            <form [formGroup]="slideCalculatorForm">
+                <ion-item>
+                    <ion-label floating>Principal Amount</ion-label>
+                    <ion-input formControlName="principal" type="number" [class.invalid]="!slideCalculatorForm.controls.principal.valid && (slideCalculatorForm.controls.principal.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!slideCalculatorForm.controls.principal.valid  && (slideCalculatorForm.controls.principal.dirty || submitAttempt)">
+                    <p>Please enter a a principal amount.</p>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Annual Interest Rate</ion-label>
+                    <ion-input formControlName="annualInterestRate" type="number" step="0.1" min="0.0" max="100.0" [class.invalid]="!slideCalculatorForm.controls.annualInterestRate.valid && (slideCalculatorForm.controls.annualInterestRate.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!slideCalculatorForm.controls.annualInterestRate.valid  && (slideCalculatorForm.controls.annualInterestRate.dirty || submitAttempt)">
+                    <p>Please enter a valid interest rate percentage.</p>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Loan Length in Years</ion-label>
+                    <ion-input formControlName="loanLength" type="number" step="1" min="1" max="30" [class.invalid]="!slideCalculatorForm.controls.loanLength.valid && (slideCalculatorForm.controls.loanLength.dirty || submitAttempt)"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!slideCalculatorForm.controls.loanLength.valid  && (slideCalculatorForm.controls.loanLength.dirty || submitAttempt)">
+                    <p>Please enter a valid loan length in years.</p>
+                </ion-item>
+
+                <button ion-button full color="primary" (click)="submit()">Calculate!</button>
+            </form>
+        </ion-list>
+    </ion-slide>
+    <ion-slide>
+        <ion-list no-lines class="amortization">
+            <ion-row>
+                <ion-col>Payment #</ion-col>
+                <ion-col>Principle</ion-col>
+                <ion-col>Interest</ion-col>
+                <ion-col>Balance</ion-col>
+            </ion-row>
+            <ion-scroll scrollY="true" class="amortization">
+                <ion-row *ngFor="let amortizationScheduleItem of amortizationSchedule">
+                    <ion-col>{{amortizationScheduleItem.id}}</ion-col>
+                    <ion-col>{{amortizationScheduleItem.principleForMonth}}</ion-col>
+                    <ion-col>{{amortizationScheduleItem.interestForMonth}}</ion-col>
+                    <ion-col>{{amortizationScheduleItem.endOfMonthBalance}}</ion-col>
+                </ion-row>
+            </ion-scroll>
+        </ion-list>
+    </ion-slide>
+</ion-slides>

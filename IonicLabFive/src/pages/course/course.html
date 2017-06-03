@@ -1,0 +1,26 @@
+﻿<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Courses
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="courses" padding>
+    <h2 class="center">Grad Academy Courses</h2>
+    <ion-card>
+        <ion-card-header>
+            {{courseModel.name}}
+        </ion-card-header>
+        <ion-card-content>
+            {{courseModel.syllabus}}
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button (click)="openDocument(courseModel.filePath)" ion-button icon-left clear small>
+                    <ion-icon name="md-document"></ion-icon>
+                    <div>View {{courseModel.name}} as PDF </div>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>
